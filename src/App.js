@@ -16,6 +16,7 @@ function App() {
         date={expense[0].date}
         amount={expense[0].amount}
       ></ExpenseItem>
+      <p></p>
     </div>
   );
 }
