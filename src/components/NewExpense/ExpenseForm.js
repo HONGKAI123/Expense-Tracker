@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-function ExpenseForm() {
+function ExpenseForm(props) {
   // alterntive way: sperate 3 states
   const [entertitle, setEntertitle] = useState("");
   const [enterdate, setEneterdate] = useState("");
@@ -39,6 +39,8 @@ function ExpenseForm() {
     e.preventDefault();
     const expense = {
       //store all the input value into an object
+
+      //这里的value 会被pass 到他的parent component里面
       title: entertitle,
       amount: enteramount,
       date: new Date(enterdate),
@@ -47,11 +49,12 @@ function ExpenseForm() {
     // need to add a value attribute on that html class
     // set the value attr to first state(first element of useState).
     // and then update the state
+    props.onSaveDate(expense); //这里可以execute 因为我们是把这个function pass到他的parent里面的
     setEntertitle("");
     setEnteramount("");
     setEneterdate("");
 
-    console.log(expense);
+    // console.log(expense);
   };
 
   return (
@@ -84,7 +87,7 @@ function ExpenseForm() {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Submit</button> dang
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
