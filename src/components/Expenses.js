@@ -15,7 +15,22 @@ function Expenses(props) {
       <Card className="expenses">
         <ExpensesFilter onsaveyear={yearchangeHandeler} onSelected={year} />
         {/* onsaveyear={yearchangeHandeler} */}
-        <ExpenseItem
+        {props.item.map((data1) => (
+          //data 是appjs 里面的array， map这个array里面的东西 然后使用props 设置在expenseitem里面
+          <ExpenseItem
+            title1={data1.title}
+            date={data1.date}
+            amount={data1.amount}
+          />
+        ))}
+        {/* {props.item.map((expenses) => (
+          <ExpenseItem
+            title1={expenses.title}
+            date={expenses.date}
+            amount={expenses.amount}
+          /> //title1是child component 需要接收一些value，  expense是array， 等于把所有props的值在appjs 里面设置
+        ))} */}
+        {/* <ExpenseItem
           title1={props.item[0].title}
           date={props.item[0].date}
           amount={props.item[0].amount}
@@ -34,7 +49,7 @@ function Expenses(props) {
           title1={props.item[3].title}
           date={props.item[3].date}
           amount={props.item[3].amount}
-        ></ExpenseItem>
+        ></ExpenseItem> */}
       </Card>
     </div>
   );
