@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
+
 import "./Expenses.css";
 import Card from "./Card";
 import ExpensesFilter from "./ExpensesFilter";
+import Expenselist from "./Expenselist";
+import Expenseschart from "./Expenseschart";
 
 function Expenses(props) {
   const yearchangeHandeler = (years) => {
@@ -31,9 +33,11 @@ function Expenses(props) {
     <div>
       <Card className="expenses">
         <ExpensesFilter onsaveyear={yearchangeHandeler} onSelected={year} />
+        <Expenseschart expense={filteritem} />
+        <Expenselist item={filteritem} />
 
         {/* onsaveyear={yearchangeHandeler} */}
-        {filteritem.length === 0 && <p>noting here </p>}
+        {/* {filteritem.length === 0 && <p>noting here </p>}
         {filteritem.length > 0 &&
           filteritem.map((data1) => (
             //way2
@@ -45,7 +49,7 @@ function Expenses(props) {
               date={data1.date}
               amount={data1.amount}
             />
-          ))}
+          ))} */}
         {/* {filteritem.map((data1) => (
           //props.item.map((data1) 变成filteritem.map((data1), 把data在map前先filter 一次
           //data 是appjs 里面的array， map这个array里面的东西 然后使用props 设置在expenseitem里面

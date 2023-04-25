@@ -42,7 +42,7 @@ function ExpenseForm(props) {
 
       //这里的value 会被pass 到他的parent component里面
       title: entertitle,
-      amount: enteramount,
+      amount: +enteramount,
       date: new Date(enterdate),
     };
     //two way bind, after submit, rest input
@@ -59,6 +59,7 @@ function ExpenseForm(props) {
 
   return (
     //当button type是submit 并且在form里面的时候， form会生成一个event
+
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -87,6 +88,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={props.onCancel}>Cancel</button>
         <button type="submit">Submit</button>
       </div>
     </form>
